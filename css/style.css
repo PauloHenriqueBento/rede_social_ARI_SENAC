@@ -1,0 +1,29 @@
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a{
+    color: #000;
+    text-decoration: none;
+}
+a:hover{
+    color: #000;
+
+}
+
+header h1{
+    color: #3b5998;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+}
+
+header a{
+    padding: 3px 5px;
+    margin: 0 5px;
+    font-size: 1.1rem;
+}
+
+header a:hover{
+    color: #3b5998;
+}
