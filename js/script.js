@@ -43,21 +43,50 @@ function validarCPF() {
 }
 
 function armazena(){
-    
+
     var username = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var CPF = document.getElementById('CPF').value;
     var telefone = document.getElementById('telefone').value;
     var password = document.getElementById('password').value;
+    
+    var getLocalKey = localStorage.getItem(email)
+    var checkLocalKey = JSON.parse(getLocalKey)
 
-    var user = {
-        username : username,
-        email : email,
-        CPF : CPF,
-        telefone : telefone,
-        password : password
+    if(!checkLocalKey){    
+        var user = {
+            username : username,
+            email : email,
+            CPF : CPF,
+            telefone : telefone,
+            password : password
+        }
+    
+        localStorage.setItem(email, JSON.stringify(user));
+
+        window.location.replace("/")
+    } else {
+        alert('Email já cadastrado')
     }
 
+    
+}
 
-    localStorage.setItem(CPF, JSON.stringify(user));
+function login(){
+    var getEmailLogin = document.getElementById('email').value;
+    var getPasswordLogin = document.getElementById('password').value;
+
+    var localEmail = localStorage.getItem(getEmailLogin);
+    var checkLocalEmail = JSON.parse(localEmail);
+    var checkLocalpassword = checkLocalEmail.password
+
+    if(checkLocalEmail){
+        if(getPasswordLogin == checkLocalpassword){
+            localStorage.setItem(auth, 1);
+        } else {
+            alert("Senha incorreta")
+        }
+    } else {
+        alert("Dados de usuário não existe ou não estão correto")
+    }
 }
