@@ -64,7 +64,7 @@ function armazena(){
     
         localStorage.setItem(email, JSON.stringify(user));
 
-        window.location.replace("/")
+        window.location.replace("index.html")
     } else {
         alert('Email já cadastrado')
     }
@@ -83,7 +83,7 @@ function login(){
     if(checkLocalEmail){
         if(getPasswordLogin == checkLocalpassword){
             localStorage.setItem('auth', localEmail);
-            window.location.replace("/dashboard.html");
+            window.location.replace("dashboard.html");
         } else {
             alert("Senha incorreta")
         }
@@ -95,7 +95,7 @@ function login(){
 function authvalidate(){
     var getAuth = localStorage.getItem('auth');
     if(!getAuth){
-        window.location.replace('/')
+        window.location.replace('index.html')
     } else {
         var contentLocal = localStorage.getItem('post'); 
 
@@ -105,7 +105,7 @@ function authvalidate(){
 
 function logout(){
     localStorage.removeItem('auth');
-    window.location.replace('/');
+    window.location.replace('index.html');
 }
 
 
