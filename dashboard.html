@@ -18,19 +18,36 @@
 
     <title>Dashboard</title>
 </head>
-<body>
+<body onload="authvalidate()">
 
     <header class="d-flex justify-content-between mt-3 container">
         <div>
             <h1>Rede Social</h1>
         </div>
         <div>
+            <button class="btn btn-danger" onclick="logout()">Logout</button>
         </div>
     </header>
-    <main>
-        Dashboard
+    <main class="container">
+        <section>
+            <form action="" class="formPost" id="formPost">
+                <div class="form-control">
+                    <textarea class="form-control" name="textarea" placeholder="No que está pensando?" id="textarea" maxlength="2000"></textarea>
+                </div>
+                <button onclick="newPost()" type="button" id="sendPost" class="btn btn-success">Enviar</button>
+            </form>
+        </section>
+        <section>
+            <h2 class="text-center">Posts</h2>
+            <div id="post">
+                
+            </div>
+        </section>
     </main>
     
 </body>
+
+<script src="js/script.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </html>

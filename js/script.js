@@ -78,15 +78,62 @@ function login(){
 
     var localEmail = localStorage.getItem(getEmailLogin);
     var checkLocalEmail = JSON.parse(localEmail);
-    var checkLocalpassword = checkLocalEmail.password
+    var checkLocalpassword = checkLocalEmail?checkLocalEmail.password : ''
 
     if(checkLocalEmail){
         if(getPasswordLogin == checkLocalpassword){
-            localStorage.setItem(auth, 1);
+            localStorage.setItem('auth', localEmail);
+            window.location.replace("/dashboard.html");
         } else {
             alert("Senha incorreta")
         }
     } else {
         alert("Dados de usuário não existe ou não estão correto")
     }
+}
+
+function authvalidate(){
+    var getAuth = localStorage.getItem('auth');
+    if(!getAuth){
+        window.location.replace('/')
+    } else {
+        var contentLocal = localStorage.getItem('post'); 
+
+        document.getElementById('post').innerHTML = contentLocal;
+    }
+}
+
+function logout(){
+    localStorage.removeItem('auth');
+    window.location.replace('/');
+}
+
+
+function newPost(){
+    var post = document.getElementById('textarea').value;
+    var localStorageUser = localStorage.getItem('auth')
+    var stringLocalStorageUser = JSON.parse(localStorageUser)
+    var userName = stringLocalStorageUser.username
+    var agora = new Date()
+    var ano = agora.getFullYear()
+    var mes = agora.getMonth() + 1;
+    var dia =agora.getDate()
+
+    if (dia < 10){
+        dia = '0' + dia;
+    }
+    if (mes < 10){
+        mes = '0' + mes;
+    }
+    var data = dia + '/' + mes + '/' + ano
+
+    var html = document.getElementById('post').innerHTML
+
+    var newPost = '<div class="border"><h3>' + userName +'</h3><p>' + post + '</p><span>' + data +'</span></div>'
+
+    var newHtml = newPost + html 
+
+    document.getElementById('post').innerHTML = newHtml;
+    
+    localStorage.setItem('post', newHtml);
 }
